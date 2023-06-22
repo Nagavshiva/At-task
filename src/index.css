@@ -1,0 +1,303 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+.sidebar-container {
+  width: 256px;
+  height: 840px;
+  background: #101840;
+  position: relative;
+}
+
+.navbar-container {
+  background: #FFF;
+  position: fixed;
+  top: 0;
+  left: 256px;
+  z-index: 1;
+  width: 1280px;
+  height: 56px;
+  border: 1px solid #eee9e9;
+}
+
+/* ............main.............. */
+
+.main-container {
+  position: absolute;
+  left: 256px;
+  top: 100px;
+  width: 1280px;
+  height: 740px;
+}
+
+.main-head {
+  margin-left: 25px;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.main-head span {
+  opacity: 0.7;
+  color: #767986;
+  font-size: 14px;
+  font-family: Segoe UI;
+  font-style: italic;
+  line-height: 16px;
+}
+
+.main-head p {
+  color: #31354A;
+  font-size: 28px;
+  font-family: Segoe UI;
+  font-weight: 600;
+  line-height: 30px;
+}
+
+.main-head a {
+  color: #36F;
+  font-size: 14px;
+  font-family: Segoe UI;
+  line-height: 16px;
+}
+
+.main-taskbox {
+  margin: 25px;
+  display: flex;
+  width: 368px;
+  height: 37px;
+  border: 1px solid #eee9e9;
+  position: relative;
+}
+
+.main-taskbox p {
+  color: #31354A;
+  font-size: 12px;
+  font-family: Segoe UI;
+  line-height: 16px;
+  letter-spacing: 1px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.main-taskbox button {
+  position: absolute;
+  right: 0;
+  width: 37px;
+  height: 37px;
+  border: none;
+  outline: none;
+  cursor: pointer;
+}
+
+
+/* .................add.jsx................ */
+
+.add-form-container {
+  width: 368px;
+  height: 311px;
+  border-radius: 3px;
+  border: 1px solid #E5E5E5;
+  background: #EDF7FC;
+  margin-left: 25px;
+  margin-top: -25px;
+  position: relative;
+}
+
+.task-desc {
+  display: flex;
+  flex-direction: column;
+  margin: 10px;
+  gap: 10px;
+}
+
+.task-desc label {
+  color: #262E39;
+  font-size: 14px;
+  font-family: Segoe UI;
+  line-height: 16px;
+}
+
+.task-desc input {
+  width: 345px;
+  height: 31px;
+  border-radius: 3px;
+  border: 1px solid #E5E5E5;
+  background: #FFF;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+  outline: 0;
+}
+
+.task-dt {
+  display: flex;
+  gap: 10px;
+  margin: 10px;
+}
+
+.task-dt input {
+  width: 168px;
+  height: 34px;
+  border-radius: 3px;
+  border: 1px solid #E5E5E5;
+  background: #FFF;
+}
+
+.task-date,
+.task-time {
+  display: flex;
+  flex-direction: column;
+}
+
+.task-assign {
+  display: flex;
+  flex-direction: column;
+  margin: 10px;
+}
+
+.task-assign input {
+  width: 345px;
+  height: 31px;
+  border-radius: 3px;
+  border: 1px solid #E5E5E5;
+  background: #FFF;
+}
+
+.task-button {
+  position: absolute;
+  right: 15px;
+  bottom: 20px;
+  display: flex;
+  gap: 1rem;
+}
+
+.cancel-btn {
+  color: #262E39;
+  font-size: 14px;
+  font-family: Segoe UI;
+  line-height: 16px;
+  outline: none;
+  border: none;
+  background: none;
+  cursor: pointer;
+}
+
+.save-btn {
+  width: 80px;
+  height: 29px;
+  border-radius: 14.5px;
+  border: 1px solid #104FCC;
+  background: #1463FF;
+  cursor: pointer;
+}
+
+
+/* ..............get.jsx........... */
+
+.get-task-container {
+  width: 368px;
+  height: 90px;
+  margin-left: 25px;
+  margin-top: -25px;
+  border-radius: 3px;
+  border: 1px solid #E5E5E5;
+  background: #FFF;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.left-content {
+  margin-left: 10px;
+  display: flex;
+  gap: 10px;
+}
+
+.spans1 {
+  width: 27px;
+  height: 27px;
+  border-radius: 27px;
+  background: #5A99E3;
+}
+
+.left-content span {
+  color: #D0021B;
+  font-size: 11px;
+  font-family: Segoe UI;
+  line-height: 13px;
+}
+
+.right-icons {
+  display: flex;
+  margin-right: 10px;
+  gap: 10px;
+}
+
+.icon {
+  width: 16px;
+  height: 16px;
+  cursor: pointer;
+}
+
+
+/* .................login.jsx................. */
+
+.login-container {
+  background-color: #EDF7FC;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+
+.login-container form {
+  display: flex;
+  flex-direction: column;
+}
+
+.login-container label {
+  display: flex;
+  flex-direction: column;
+}
+
+.login-container input {
+  width: 200px;
+  height: 30px;
+}
+
+.login-container button {
+  color: rgb(236, 238, 244);
+  background-color: #36F;
+  border-radius: 10px;
+  border: none;
+  outline: none;
+  padding: 10px;
+  cursor: pointer;
+}
+
+
+/* ...............update.jsx........... */
+
+.task-update-button {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 10px;
+  margin-top: 55px;
+}
+
+.rigt-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+
+.delete-btn {
+  cursor: pointer;
+  background: #FAFBFF;
+}

@@ -1,0 +1,254 @@
+{
+  "users": [
+    {
+      "username": "naga",
+      "password": "12345",
+      "id": 1
+    },
+    {
+      "username": "naga",
+      "password": "12345",
+      "id": 2
+    },
+    {
+      "username": "naga",
+      "password": "12345",
+      "id": 3
+    },
+    {
+      "username": "naga",
+      "password": "12345",
+      "id": 4
+    },
+    {
+      "username": "naga",
+      "password": "12345",
+      "id": 5
+    },
+    {
+      "username": "vb",
+      "password": "1234567",
+      "id": 6
+    },
+    {
+      "username": "vb",
+      "password": "1234567",
+      "id": 7
+    },
+    {
+      "username": "vb",
+      "password": "1234567",
+      "id": 8
+    },
+    {
+      "username": "fsf",
+      "password": "12345",
+      "id": 9
+    },
+    {
+      "username": "xzx",
+      "password": "12345",
+      "id": 10
+    },
+    {
+      "username": "nga",
+      "password": "123456",
+      "id": 11
+    },
+    {
+      "username": "ryfgh",
+      "password": "1235",
+      "id": 12
+    },
+    {
+      "username": "sds123",
+      "password": "123",
+      "id": 13
+    },
+    {
+      "email": "nagav123@gmail.com",
+      "password": "1234567",
+      "id": 14
+    }
+  ],
+  "team": [
+    {
+      "assigned_user": "erer",
+      "task_date": "2023-05-31",
+      "task_time": "8.30",
+      "time_zone": -19800,
+      "task_msg": "fddf",
+      "user_id": 13,
+      "companyId": "bbeffc8d-934b-46a1-a1bd-c0081871bad0",
+      "id": 1
+    },
+    {
+      "assigned_user": "dfdf",
+      "task_date": "2023-06-05",
+      "task_time": "8.00",
+      "time_zone": -19800,
+      "task_msg": "fsfs",
+      "id": 2
+    },
+    {
+      "assigned_user": "fdfd",
+      "task_date": "2023-05-08",
+      "task_time": "6.00",
+      "time_zone": -19800,
+      "task_msg": "dgg",
+      "id": 3
+    },
+    {
+      "assigned_user": "",
+      "task_date": "2023-06-21",
+      "task_time": "",
+      "time_zone": -19800,
+      "task_msg": "",
+      "id": 4
+    },
+    {
+      "assigned_user": "",
+      "task_date": "2023-06-21",
+      "task_time": "",
+      "time_zone": -19800,
+      "task_msg": "",
+      "id": 5
+    },
+    {
+      "assigned_user": "",
+      "task_date": "2023-06-21",
+      "task_time": "",
+      "time_zone": -19800,
+      "task_msg": "",
+      "id": 6
+    },
+    {
+      "assigned_user": "",
+      "task_date": "2023-06-21",
+      "task_time": "",
+      "time_zone": -19800,
+      "task_msg": "",
+      "id": 7
+    },
+    {
+      "assigned_user": "",
+      "task_date": "2023-06-21",
+      "task_time": "",
+      "time_zone": -19800,
+      "task_msg": "",
+      "id": 8
+    },
+    {
+      "assigned_user": "",
+      "task_date": "2023-06-21",
+      "task_time": "",
+      "time_zone": -19800,
+      "task_msg": "",
+      "id": 9
+    },
+    {
+      "assigned_user": "",
+      "task_date": "2023-06-21",
+      "task_time": "",
+      "time_zone": -19800,
+      "task_msg": "",
+      "id": 10
+    },
+    {
+      "assigned_user": "",
+      "task_date": "2023-06-21",
+      "task_time": "",
+      "time_zone": -19800,
+      "task_msg": "",
+      "id": 11
+    },
+    {
+      "assigned_user": "",
+      "task_date": "2023-06-21",
+      "task_time": "",
+      "time_zone": -19800,
+      "task_msg": "",
+      "id": 12
+    },
+    {
+      "assigned_user": "",
+      "task_date": "2023-06-21",
+      "task_time": "",
+      "time_zone": -19800,
+      "task_msg": "",
+      "id": 13
+    },
+    {
+      "assigned_user": "",
+      "task_date": "2023-06-21",
+      "task_time": "",
+      "time_zone": -19800,
+      "task_msg": "",
+      "id": 14
+    },
+    {
+      "assigned_user": "",
+      "task_date": "2023-06-21",
+      "task_time": "",
+      "time_zone": -19800,
+      "task_msg": "",
+      "id": 15
+    },
+    {
+      "assigned_user": "",
+      "task_date": "2023-06-21",
+      "task_time": "",
+      "time_zone": -19800,
+      "task_msg": "",
+      "id": 16
+    },
+    {
+      "assigned_user": "",
+      "task_date": "2023-06-21",
+      "task_time": "",
+      "time_zone": -19800,
+      "task_msg": "",
+      "id": 17
+    },
+    {
+      "assigned_user": "dfdf",
+      "task_date": "2023-06-21",
+      "task_time": "8",
+      "time_zone": -19800,
+      "task_msg": "sdd",
+      "id": 18
+    },
+    {
+      "assigned_user": "gddg",
+      "task_date": "2023-06-21",
+      "task_time": "8.00",
+      "time_zone": -19800,
+      "task_msg": "gdg",
+      "id": 19
+    },
+    {
+      "assigned_user": "sdds",
+      "task_date": "2023-05-30",
+      "task_time": "8.00",
+      "time_zone": -19800,
+      "task_msg": "fdf",
+      "id": 20
+    },
+    {
+      "assigned_user": "sdsd",
+      "task_date": "2023-05-31",
+      "task_time": "7",
+      "time_zone": -19800,
+      "task_msg": "sds",
+      "id": 21
+    },
+    {
+      "assigned_user": "dsds",
+      "task_date": "2023-06-21",
+      "task_time": "9",
+      "time_zone": -19800,
+      "task_msg": "sds",
+      "id": 22
+    }
+  ]
+}
