@@ -46,12 +46,13 @@ const Add = ({ show }) => {
       };
 
       const response = await axios.post(
-        `http://localhost:3001/team?userId=${id}&companyId=${companyId}`,
+        `https://648d83852de8d0ea11e7ec7e.mockapi.io/team?userId=${id}&companyId=${companyId}`,
         taskData,
         { headers }
       );
+    const _id = response.data.id
       console.log("Task created:", response.data);
-
+      localStorage.setItem("team_id",_id );
       navigate("/get");
     } catch (error) {
       console.error("Task creation failed:", error);

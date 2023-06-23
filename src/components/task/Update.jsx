@@ -40,7 +40,7 @@ const Update = () => {
       };
 
       const response = await axios.put(
-        `http://localhost:3001/team/${team_id}`,
+        `https://648d83852de8d0ea11e7ec7e.mockapi.io/team/${team_id}`,
         taskData,
         { headers }
       );
@@ -59,11 +59,12 @@ const Update = () => {
       };
 
       const response = await axios.delete(
-        `http://localhost:3001/team/${team_id}`,
+        `https://648d83852de8d0ea11e7ec7e.mockapi.io/team/${team_id}`,
         { headers }
       );
 
       console.log("Task deleted:", response.data);
+      navigate("/get");
     } catch (error) {
       console.error("Task deletion failed:", error);
     }

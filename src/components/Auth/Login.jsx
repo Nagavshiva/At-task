@@ -16,7 +16,7 @@ const Login = () => {
     }
 
     try {
-      const response = await axios.post("http://localhost:3001/users", {
+      const response = await axios.post("https://648d83852de8d0ea11e7ec7e.mockapi.io/users", {
         email,
         password,
       });

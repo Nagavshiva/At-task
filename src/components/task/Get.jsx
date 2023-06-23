@@ -23,7 +23,7 @@ const Get = () => {
         Authorization: "Bearer " + accessToken,
       };
       const response = await axios.get(
-        `http://localhost:3001/team?userId=${id}&teamId=${team_id}&companyId=${companyId}`,
+        `https://648d83852de8d0ea11e7ec7e.mockapi.io/team?userId=${id}&teamId=${team_id}&companyId=${companyId}`,
         { headers }
       );
       console.log(response.data);
