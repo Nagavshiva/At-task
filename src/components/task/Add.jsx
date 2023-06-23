@@ -1,21 +1,18 @@
 import axios from "axios";
-import { useLocation } from "react-router-dom";
-import { useState } from "react";
-import 'react-datetime-picker/dist/DateTimePicker.css';
-import 'react-calendar/dist/Calendar.css';
-import 'react-clock/dist/Clock.css';
-import DateTimePicker from 'react-datetime-picker';
-
+import { useState} from "react";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
+import {useNavigate} from "react-router-dom";
 
 // eslint-disable-next-line react/prop-types
 const Add = ({ show }) => {
-  const location = useLocation();
-
   const [taskDescription, setTaskDescription] = useState("");
   const [taskDate, setTaskDate] = useState(new Date());
   const [taskTime, setTaskTime] = useState("");
   const [assignedUser, setAssignedUser] = useState("");
   const [isSaving, setIsSaving] = useState(false);
+
+  const navigate = useNavigate();
 
   const handleCancel = () => {
     show();
@@ -32,7 +29,9 @@ const Add = ({ show }) => {
     setIsSaving(true);
 
     try {
-      const { user: { id }, companyId, accessToken } = location.state;
+      const id = localStorage.getItem("id");
+      const companyId = localStorage.getItem("companyId");
+      const accessToken = localStorage.getItem("accessToken");
 
       const taskData = {
         assigned_user: assignedUser,
@@ -51,14 +50,9 @@ const Add = ({ show }) => {
         taskData,
         { headers }
       );
-
       console.log("Task created:", response.data);
 
-      // Clear form fields
-      setTaskDescription("");
-      setTaskDate(new Date());
-      setTaskTime("");
-      setAssignedUser("");
+      navigate("/get");
     } catch (error) {
       console.error("Task creation failed:", error);
     }
@@ -83,15 +77,17 @@ const Add = ({ show }) => {
         <div className="task-dt">
           <div className="task-date">
             <label>Date</label>
-            < DateTimePicker
-              value={taskDate}
+            <DatePicker
+              selected={taskDate}
               onChange={(date) => setTaskDate(date)}
+              dateFormat="yyyy-MM-dd"
             />
           </div>
 
           <div className="task-time">
             <label>Time</label>
-            <DateTimePicker
+            <input
+              type="time"
               value={taskTime}
               onChange={(e) => setTaskTime(e.target.value)}
             />
@@ -123,5 +119,3 @@ const Add = ({ show }) => {
 };
 
 export default Add;
-
-

@@ -1,23 +1,18 @@
 import { useState } from "react";
-// import Add from "./Add";
-import Get from "./Get";
-import Update from "./Update"
+import Add from "./Add";
 
 
 const Main = () => {
-  // const [showTask, setShowTask] = useState(false);
-    const [showUpdate,setShowUpdate] = useState(false);
-  // const handleAdd = () => {
-  //   setShowTask(true);
-  // };
+  const [showTask, setShowTask] = useState(false);
 
-  // const handleClose = () => {
-  //   setShowTask(false);
-  // };
+  const handleAdd = () => {
+    setShowTask(true);
+  };
 
-  const handleCancelUpdate = ()=>{
-    setShowUpdate(showUpdate)
-  }
+  const handleClose = () => {
+    setShowTask(false);
+  };
+
   return (
     <>
       <div className="main-container">
@@ -29,14 +24,12 @@ const Main = () => {
 
         <div className="main-taskbox">
           <p>Task 0</p>
-          {/* <button onClick={handleAdd}>+</button> */}
+          <button onClick={handleAdd}>+</button>
         </div>
 
-        {/* {showTask && <Add show={handleClose} />} */}
-        <Get/>
-         <div>
-          <Update shows={handleCancelUpdate}/>
-        </div>
+        {showTask && 
+          <Add show={handleClose} />
+}
       </div>
     </>
   );

@@ -1,23 +1,22 @@
 import axios from "axios";
-import { useLocation ,Link} from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
-import {AiFillDelete} from "react-icons/ai";
+import { AiFillDelete } from "react-icons/ai";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 
-// eslint-disable-next-line react/prop-types
-const Update= ({ shows }) => {
-  const location = useLocation();
-
+const Update = () => {
   const [taskDescription, setTaskDescription] = useState("");
   const [taskDate, setTaskDate] = useState(new Date());
   const [taskTime, setTaskTime] = useState("");
   const [assignedUser, setAssignedUser] = useState("");
-  const [isSaving, setIsSaving] = useState(false);
+ 
 
-  const handleCancel = () => {
-    shows();
-  };
+  const navigate = useNavigate();
+  const storedTeamId = localStorage.getItem("team_id");
+  const team_id = storedTeamId;
+  const storedAccessToken = localStorage.getItem("accessToken");
+  const accessToken = storedAccessToken;
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -27,11 +26,7 @@ const Update= ({ shows }) => {
       return;
     }
 
-    setIsSaving(true);
-
     try {
-      const { user: { id }, companyId, accessToken } = location.state;
-
       const taskData = {
         assigned_user: assignedUser,
         task_date: taskDate.toISOString().split("T")[0],
@@ -45,23 +40,33 @@ const Update= ({ shows }) => {
       };
 
       const response = await axios.put(
-        `http://localhost:3001/team?userId=${id}&companyId=${companyId}`,
+        `http://localhost:3001/team/${team_id}`,
         taskData,
         { headers }
       );
 
-      console.log("Task created:", response.data);
-
-      // Clear form fields
-      setTaskDescription("");
-      setTaskDate(new Date());
-      setTaskTime("");
-      setAssignedUser("");
+      console.log("Task updated:", response.data);
+      navigate("/get");
     } catch (error) {
-      console.error("Task creation failed:", error);
+      console.error("Task update failed:", error);
     }
+  };
 
-    setIsSaving(false);
+  const handleDelete = async () => {
+    try {
+      const headers = {
+        Authorization: "Bearer " + accessToken,
+      };
+
+      const response = await axios.delete(
+        `http://localhost:3001/team/${team_id}`,
+        { headers }
+      );
+
+      console.log("Task deleted:", response.data);
+    } catch (error) {
+      console.error("Task deletion failed:", error);
+    }
   };
 
   return (
@@ -110,19 +115,17 @@ const Update= ({ shows }) => {
 
         {/* Form buttons */}
         <div className="task-update-button">
-          <span >
-            <AiFillDelete className="delete-btn"/>
+          <span>
+            <AiFillDelete className="delete-btn" onClick={handleDelete} />
           </span>
-         <div className="rigt-btn">
-        <Link to="/get">
-        <button className="cancel-btn" onClick={handleCancel}>
-            Cancel
-          </button>
-        </Link>
-          <button type="submit" className="save-btn" disabled={isSaving}>
-            {isSaving ? "Updating..." : "Update"}
-          </button>
-         </div>
+          <div className="rigt-btn">
+            <Link to='/get'>
+              <button className="cancel-btn">Cancel</button>
+            </Link>
+            <button type="submit" className="save-btn">
+              Update
+            </button>
+          </div>
         </div>
       </form>
     </>
