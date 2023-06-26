@@ -5,16 +5,19 @@ import { AiFillDelete } from "react-icons/ai";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 
-const Update = () => {
+// eslint-disable-next-line react/prop-types
+const Update = ({decrementTaskCount}) => {
   const [taskDescription, setTaskDescription] = useState("");
   const [taskDate, setTaskDate] = useState(new Date());
   const [taskTime, setTaskTime] = useState("");
   const [assignedUser, setAssignedUser] = useState("");
+
  
 
   const navigate = useNavigate();
   const storedTeamId = localStorage.getItem("team_id");
   const team_id = storedTeamId;
+  console.log(team_id)
   const storedAccessToken = localStorage.getItem("accessToken");
   const accessToken = storedAccessToken;
 
@@ -64,7 +67,8 @@ const Update = () => {
       );
 
       console.log("Task deleted:", response.data);
-      navigate("/get");
+      decrementTaskCount()
+      navigate("/side");
     } catch (error) {
       console.error("Task deletion failed:", error);
     }
@@ -97,7 +101,7 @@ const Update = () => {
           <div className="task-time">
             <label>Time</label>
             <input
-              type="text"
+              type="time"
               value={taskTime}
               onChange={(e) => setTaskTime(e.target.value)}
             />

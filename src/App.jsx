@@ -2,8 +2,7 @@ import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import Sidebar from './components/Sidebar';
 import Login from './components/Auth/Login';
-import Get from './components/task/Get';
-import Update from './components/task/Update';
+
 
 const App = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -19,12 +18,12 @@ const App = () => {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<Login setIsLoggedIn={!setIsLoggedIn} />} />
+        <Route path="/" element={<Login />} />
         {isLoggedIn ? (
           <>
             <Route path="/side" element={<Sidebar />} />
-            <Route path="/get" element={<Get />} />
-            <Route path="/update/:id" element={<Update />} />
+            <Route path="/get" element={<Sidebar />} />
+            <Route path="/update/:id" element={<Sidebar/>} />
           </>
         ) : (
           <Route path="*" element={<Navigate to="/" />} />

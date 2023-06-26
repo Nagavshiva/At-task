@@ -5,7 +5,7 @@ import "react-datepicker/dist/react-datepicker.css";
 import {useNavigate} from "react-router-dom";
 
 // eslint-disable-next-line react/prop-types
-const Add = ({ show }) => {
+const Add = ({ show ,incrementTaskCount }) => {
   const [taskDescription, setTaskDescription] = useState("");
   const [taskDate, setTaskDate] = useState(new Date());
   const [taskTime, setTaskTime] = useState("");
@@ -53,6 +53,7 @@ const Add = ({ show }) => {
     const _id = response.data.id
       console.log("Task created:", response.data);
       localStorage.setItem("team_id",_id );
+      incrementTaskCount()
       navigate("/get");
     } catch (error) {
       console.error("Task creation failed:", error);

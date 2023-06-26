@@ -1,9 +1,14 @@
 import { useState } from "react";
 import Add from "./Add";
-
+import Get from "./Get";
+import Update from "./Update";
+import { useLocation } from "react-router-dom";
 
 const Main = () => {
   const [showTask, setShowTask] = useState(false);
+  const [taskCount, setTaskCount] = useState(0); 
+  const location = useLocation();
+  console.log(location);
 
   const handleAdd = () => {
     setShowTask(true);
@@ -13,6 +18,12 @@ const Main = () => {
     setShowTask(false);
   };
 
+  const incrementTaskCount = () => {
+    setTaskCount((prevCount) => prevCount + 1);
+  };
+  const decrementTaskCount = () => {
+    setTaskCount((prevCount) => prevCount - 1);
+  };
   return (
     <>
       <div className="main-container">
@@ -23,17 +34,20 @@ const Main = () => {
         </div>
 
         <div className="main-taskbox">
-          <p>Task 0</p>
-          <button onClick={handleAdd}>+</button>
+          <p>Task {taskCount}</p>
+          {location.pathname === "/side" && (
+            <button onClick={handleAdd}>+</button>
+          )}
         </div>
 
-        {showTask && 
-          <Add show={handleClose} />
-}
+        {showTask && location.pathname === "/side" && (
+          <Add show={handleClose} incrementTaskCount={incrementTaskCount} />
+        )}
+        {location.pathname === "/get" && <Get />}
+        {location.pathname.startsWith("/update/") && <Update  decrementTaskCount={decrementTaskCount} />}
       </div>
     </>
   );
 };
 
 export default Main;
-
