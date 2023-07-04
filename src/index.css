@@ -25,9 +25,9 @@
 /* ............main.............. */
 
 .main-container {
-  position: absolute;
+  position: fixed;
   left: 256px;
-  top: 100px;
+  top: 85px;
   width: 1280px;
   height: 740px;
 }
@@ -155,9 +155,11 @@
   display: flex;
   flex-direction: column;
   margin: 10px;
+
 }
 
 .task-assign input {
+  position: relative;
   width: 345px;
   height: 31px;
   border-radius: 3px;
@@ -165,6 +167,20 @@
   background: #FFF;
 }
 
+.arrow-icons {
+  position: absolute;
+  right: 0;
+  bottom: 90px;
+  display: flex;
+  flex-direction: column;
+  margin-right: 15px;
+  margin-bottom: 30px;
+}
+
+.iconss{
+ font-size:larger;
+ cursor: pointer;
+}
 .task-button {
   position: absolute;
   right: 15px;
@@ -300,4 +316,33 @@
 .delete-btn {
   cursor: pointer;
   background: #FAFBFF;
+}
+
+
+.logout-bgn {
+  padding: 10px;
+  border-radius: 5px;
+  border: none;
+  outline: none;
+  background-color: #5A99E3;
+  margin: 3px;
+  cursor: pointer;
+}
+
+
+.dropdown-arrow{
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  right: 25px;
+  margin-top:23px;
+}
+.arrow-up,.arrow-down{
+  width: 8px;
+  height: 9px;
+  line-height: 1;
+  text-align: center;
+  font-size: 10px;
+  cursor: pointer;
+color: #262E39;
 }

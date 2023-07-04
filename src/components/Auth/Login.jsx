@@ -1,6 +1,5 @@
 import { useState } from "react";
 import axios from "axios";
-import { v4 as uuidv4 } from "uuid";
 import { useNavigate } from "react-router-dom";
 
 const Login = () => {
@@ -14,9 +13,13 @@ const Login = () => {
       console.error("please fill the field")
       return
     }
+    if (password.length < 8) {
+      console.error("Password must be at least 8 characters long");
+      return;
+    }
 
     try {
-      const response = await axios.post("https://648d83852de8d0ea11e7ec7e.mockapi.io/users", {
+      const response = await axios.post("https://stage.api.sloovi.com/login?product=outreach", {
         email,
         password,
       });
@@ -24,11 +27,11 @@ const Login = () => {
       // Login successful
       const user = response.data;
       console.log(user);
-      const companyId = uuidv4();
-      const accessToken = uuidv4();
-
+      const companyId = user.results.company_id
+      const accessToken =user.results.token
+      const userId = user.results.user_id
       // Store the data in localStorage
-      localStorage.setItem("user", JSON.stringify(user));
+      localStorage.setItem("user",  userId);
       localStorage.setItem("companyId", companyId);
       localStorage.setItem("accessToken", accessToken);
 
