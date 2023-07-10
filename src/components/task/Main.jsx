@@ -64,7 +64,7 @@ const Main = () => {
         </div>
 
         <div className="main-taskbox">
-          <p>Task{taskCount}</p>
+          <p>Tasks {taskCount}</p>
           {location.pathname === "/side" && (
             <button onClick={handleAdd}>+</button>
           )}

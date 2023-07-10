@@ -8,6 +8,7 @@ const TaskForm = ({ incrementTaskCount, show }) => {
   const [taskDate, setTaskDate] = useState("");
   const [taskTime, setTaskTime] = useState("");
   const [assignedUser, setAssignedUser] = useState("");
+  const assignedUserOptions = ["Umar", "Siva", "Naganathan"];
 
   const { createTask } = useTaskAPI();
 
@@ -26,8 +27,8 @@ const TaskForm = ({ incrementTaskCount, show }) => {
     const taskData = {
       assigned_user: assignedUser,
       task_date: taskDate.toISOString().split("T")[0],
-      task_time:seconds,
-      is_completed: 0,
+      task_time: seconds,
+      is_completed: 1,
       time_zone: new Date().getTimezoneOffset() * 60,
       task_msg: taskDescription,
     };
@@ -66,7 +67,7 @@ const TaskForm = ({ incrementTaskCount, show }) => {
             </svg>
           </span>
           <DatePicker
-          className="custom-datepicker"
+            className="custom-datepicker"
             selected={taskDate}
             onChange={(date) => setTaskDate(date)}
             dateFormat="yyyy-MM-dd"
@@ -90,7 +91,7 @@ const TaskForm = ({ incrementTaskCount, show }) => {
             </svg>
           </span>
           <DatePicker
-           className="custom-datepicker"
+            className="custom-datepicker"
             showTimeSelect
             showTimeSelectOnly
             timeIntervals={30}
@@ -101,18 +102,44 @@ const TaskForm = ({ incrementTaskCount, show }) => {
         </div>
       </div>
 
-      {/* Assigned user input */}
+      {/* Assigned user dropdown */}
       <div className="task-assign">
         <label>Assign User</label>
-        <input
-          type="text"
+        <select
+          className="custom-select"
           value={assignedUser}
           onChange={(e) => setAssignedUser(e.target.value)}
-        />
-
+        >
+          {assignedUserOptions.map((user) => (
+            <option key={user} value={user}>
+              {user}
+            </option>
+          ))}
+        </select>
         <div className="dropdown-arrow">
-          <span className="arrow-up">&#9650;</span>
-          <span className="arrow-down">&#9660;</span>
+          <svg
+            className="arrow-up"
+            xmlns="http://www.w3.org/2000/svg"
+            width="8"
+            height="5"
+            viewBox="0 0 8 5"
+            fill="none"
+          >
+            <path
+              d="M8 4.33203L4 0.332031L-1.19209e-07 4.33203L8 4.33203Z"
+              fill="#262E39"
+            />
+          </svg>
+          <svg
+            className="arrow-down"
+            xmlns="http://www.w3.org/2000/svg"
+            width="8"
+            height="4"
+            viewBox="0 0 8 4"
+            fill="none"
+          >
+            <path d="M0 0L4 4L8 0H0Z" fill="#262E39" />
+          </svg>
         </div>
       </div>
 

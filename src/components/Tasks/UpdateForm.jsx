@@ -2,7 +2,7 @@
 
 import { Link } from "react-router-dom";
 
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import useTaskAPI from "../Api/UseTaskAPI";
@@ -19,13 +19,18 @@ const UpdateForm = ({
   const [taskDate, setTaskDate] = useState(new Date(task_date));
   const [taskTime, setTaskTime] = useState(task_time);
   const [assignedUser, setAssignedUser] = useState(assigned_user);
-
+  const assignedUserOptions = ["Umar", "Siva", "Naganathan"];
   const { updateTask, deleteTask } = useTaskAPI();
+  const taskDescriptionRef = useRef(null);
 
+  useEffect(() => {
+    // Focus on the input field when the component mounts
+    taskDescriptionRef.current.focus();
+  }, []);
 
+  // Rest of the component code
   const handleSubmit = async (e) => {
     e.preventDefault();
-    
 
     if (!taskDescription || !taskDate || !taskTime || !assignedUser) {
       console.error("Please fill in all the required fields.");
@@ -40,7 +45,7 @@ const UpdateForm = ({
       assigned_user: assignedUser,
       task_date: taskDate.toISOString().split("T")[0],
       task_time: seconds,
-      is_completed: 0,
+      is_completed: 1,
       time_zone: new Date().getTimezoneOffset() * 60,
       task_msg: taskDescription,
     };
@@ -53,7 +58,6 @@ const UpdateForm = ({
       return;
     }
     await deleteTask(decrementTaskCount, showTask);
- 
   };
 
   return (
@@ -61,6 +65,7 @@ const UpdateForm = ({
       <div className="task-desc">
         <label>Task description</label>
         <input
+          ref={taskDescriptionRef}
           type="text"
           value={taskDescription}
           onChange={(e) => setTaskDescription(e.target.value)}
@@ -121,18 +126,23 @@ const UpdateForm = ({
         </div>
       </div>
 
+      {/* Assigned user dropdown */}
       <div className="task-assign">
         <label>Assign User</label>
-        <input
-          type="text"
+        <select
+          className="custom-select"
           value={assignedUser}
           onChange={(e) => setAssignedUser(e.target.value)}
-        />
+        >
+          {assignedUserOptions.map((user) => (
+            <option key={user} value={user}>
+              {user}
+            </option>
+          ))}
+        </select>
         <div className="dropdown-arrow">
-          {/* <span className="arrow-up">&#9650;</span>
-          <span className="arrow-down">&#9660;</span> */}
           <svg
-          className="arrow-up"
+            className="arrow-up"
             xmlns="http://www.w3.org/2000/svg"
             width="8"
             height="5"
@@ -145,7 +155,7 @@ const UpdateForm = ({
             />
           </svg>
           <svg
-          className="arrow-down"
+            className="arrow-down"
             xmlns="http://www.w3.org/2000/svg"
             width="8"
             height="4"
@@ -159,10 +169,19 @@ const UpdateForm = ({
 
       <div className="task-update-button">
         <span>
-{/* <AiFillDelete className="delete-btn" onClick={handleDelete} /> */}
-<svg  onClick={handleDelete} xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
-  <path d="M12.6667 2.66667H10.3333L9.66668 2H6.33334L5.66668 2.66667H3.33334V4H12.6667M4.00001 12.6667C4.00001 13.0203 4.14049 13.3594 4.39053 13.6095C4.64058 13.8595 4.97972 14 5.33334 14H10.6667C11.0203 14 11.3594 13.8595 11.6095 13.6095C11.8595 13.3594 12 13.0203 12 12.6667V4.66667H4.00001V12.6667Z" fill="#999999"/>
-</svg>
+          <svg
+            onClick={handleDelete}
+            xmlns="http://www.w3.org/2000/svg"
+            width="16"
+            height="16"
+            viewBox="0 0 16 16"
+            fill="none"
+          >
+            <path
+              d="M12.6667 2.66667H10.3333L9.66668 2H6.33334L5.66668 2.66667H3.33334V4H12.6667M4.00001 12.6667C4.00001 13.0203 4.14049 13.3594 4.39053 13.6095C4.64058 13.8595 4.97972 14 5.33334 14H10.6667C11.0203 14 11.3594 13.8595 11.6095 13.6095C11.8595 13.3594 12 13.0203 12 12.6667V4.66667H4.00001V12.6667Z"
+              fill="#999999"
+            />
+          </svg>
         </span>
         <div className="rigt-btn">
           <Link to="/get">

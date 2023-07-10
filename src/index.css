@@ -137,6 +137,12 @@
   gap: 10px;
   margin: 10px;
 }
+.task-date label {
+  color: #262E39;
+  font-size: 14px;
+  font-family: Segoe UI;
+  line-height: 16px;
+}
 
 .task-dt input {
   width: 168px;
@@ -156,7 +162,7 @@
 .task-date span {
   position: absolute;
   left: 20px;
-  bottom: 187px;
+  bottom: 182px;
   z-index: 1;
 }
 
@@ -165,7 +171,9 @@
 }
 
 .custom-datepicker {
-padding-left: 32px;
+  
+  padding-left: 32px;
+margin-top: 0.5rem;
 }
 
 .task-time span {
@@ -180,10 +188,14 @@ padding-left: 32px;
   display: flex;
   flex-direction: column;
   margin: 10px;
-
+  color: #262E39;
+  font-size: 14px;
+  font-family: Segoe UI;
+  line-height: 16px;
 }
 
-.task-assign input {
+
+.task-assign select {
   position: relative;
   width: 345px;
   height: 31px;
@@ -191,6 +203,26 @@ padding-left: 32px;
   border-radius: 3px;
   border: 1px solid #E5E5E5;
   background: #FFF;
+}
+
+.custom-select {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  padding-right: 20px;
+  width: 345px;
+  height: 31px;
+  margin-top: 0.5rem;
+  padding-left: 10px;
+  border-radius: 3px;
+  border: 1px solid #E5E5E5;
+  background: #FFF;
+
+}
+
+/* For Firefox */
+.custom-select::-ms-expand {
+  display: none;
 }
 
 .arrow-icons {
@@ -235,6 +267,7 @@ padding-left: 32px;
   background: #1463FF;
   cursor: pointer;
 }
+
 
 
 /* ..............get.jsx........... */
@@ -285,6 +318,7 @@ padding-left: 32px;
 }
 
 
+
 /* .................login.jsx................. */
 
 .login-container {
@@ -323,6 +357,7 @@ padding-left: 32px;
 }
 
 
+
 /* ...............update.jsx........... */
 
 .task-update-button {
@@ -356,19 +391,19 @@ padding-left: 32px;
   cursor: pointer;
 }
 
-
+/* ................assign user dropdown............. */
 .dropdown-arrow {
   position: absolute;
   display: flex;
   flex-direction: column;
   right: 25px;
-  margin-top: 23px;
+  margin-top: 32px;
 }
 
 .arrow-up,
 .arrow-down {
   width: 8px;
-  height: 9px;
+  height: 7px;
   line-height: 1;
   text-align: center;
   font-size: 10px;

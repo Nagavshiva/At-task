@@ -4,9 +4,8 @@ import useTaskAPI from "../Api/UseTaskAPI";
 
 // eslint-disable-next-line react/prop-types
 const TaskDetails = ({ setTaskData}) => {
-  const { loading, getTaskById } = useTaskAPI();
   const [task, setTask] = useState({});
-
+  const {  getTaskById } = useTaskAPI();
   const taskId = localStorage.getItem("task_id");
 
   useEffect(() => {
@@ -24,15 +23,12 @@ const TaskDetails = ({ setTaskData}) => {
 
   }, [taskId, setTaskData]);
 
-  if (loading) {
-    return <div>Loading...</div>;
-  }
 
 
 
   return (
     <div>
-      {task.results && Object.keys(task.results).length > 0 ? (
+    {task.results  ? (
         <div className="get-task-container" key={taskId}>
           <div className="left-content">
             <p className="spans1"></p>
@@ -44,7 +40,7 @@ const TaskDetails = ({ setTaskData}) => {
 
           <div className="right-icons">
             <Link to={`/update/${taskId}`}>
-              {/* <MdModeEdit className="icon" /> */}
+
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="16"
@@ -58,7 +54,6 @@ const TaskDetails = ({ setTaskData}) => {
                 />
               </svg>
             </Link>
-            {/* <MdNotificationsPaused className="icon" /> */}
             <svg
               className="icon"
               xmlns="http://www.w3.org/2000/svg"
