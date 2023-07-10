@@ -124,6 +124,7 @@
 .task-desc input {
   width: 345px;
   height: 31px;
+  padding-left: 10px;
   border-radius: 3px;
   border: 1px solid #E5E5E5;
   background: #FFF;
@@ -143,12 +144,36 @@
   border-radius: 3px;
   border: 1px solid #E5E5E5;
   background: #FFF;
+  cursor: pointer;
 }
 
 .task-date,
 .task-time {
   display: flex;
   flex-direction: column;
+}
+
+.task-date span {
+  position: absolute;
+  left: 20px;
+  bottom: 187px;
+  z-index: 1;
+}
+
+.task-time {
+  position: relative;
+}
+
+.custom-datepicker {
+padding-left: 32px;
+}
+
+.task-time span {
+  position: absolute;
+  text-align: center;
+  left: 9px;
+  bottom: 7px;
+  z-index: 1;
 }
 
 .task-assign {
@@ -162,6 +187,7 @@
   position: relative;
   width: 345px;
   height: 31px;
+  padding-left: 10px;
   border-radius: 3px;
   border: 1px solid #E5E5E5;
   background: #FFF;
@@ -177,10 +203,11 @@
   margin-bottom: 30px;
 }
 
-.iconss{
- font-size:larger;
- cursor: pointer;
+.iconss {
+  font-size: larger;
+  cursor: pointer;
 }
+
 .task-button {
   position: absolute;
   right: 15px;
@@ -330,19 +357,21 @@
 }
 
 
-.dropdown-arrow{
+.dropdown-arrow {
   position: absolute;
   display: flex;
   flex-direction: column;
   right: 25px;
-  margin-top:23px;
+  margin-top: 23px;
 }
-.arrow-up,.arrow-down{
+
+.arrow-up,
+.arrow-down {
   width: 8px;
   height: 9px;
   line-height: 1;
   text-align: center;
   font-size: 10px;
   cursor: pointer;
-color: #262E39;
+  color: #262E39;
 }

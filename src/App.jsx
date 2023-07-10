@@ -1,32 +1,21 @@
-import { BrowserRouter, Routes, Route,Navigate } from "react-router-dom";
-import { useState, useEffect } from "react";
+import { BrowserRouter, Routes, Route} from "react-router-dom";
 import Sidebar from "./components/Sidebar";
 import Login from "./components/Auth/Login";
+import PublicRoute from "./routes/PublicRoute";
+import PrivateRoute from "./routes/PrivateRoute";
 
 const App = () => {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
-  useEffect(() => {
-    // Check if the user is logged in
-    const userToken = localStorage.getItem("accessToken");
-    if (userToken) {
-      setIsLoggedIn(true);
-    } 
-  }, [isLoggedIn]);
 
   return (
     <BrowserRouter>
       <Routes>
-      <Route path="/" element={<Login />} />
-        {isLoggedIn ? (
-          <>
-            <Route path="/side" element={<Sidebar />} />
-            <Route path="/get" element={<Sidebar />} />
-            <Route path="/update/:id" element={<Sidebar/>} />
-          </>
-        ) : (
-          <Route path="*" element={<Navigate to="/" />} />
-        )}
+
+        <Route path="/" element={<PublicRoute><Login /></PublicRoute>} />
+        <Route path="/side" element={<PrivateRoute ><Sidebar /></PrivateRoute>} />
+        <Route path="/get" element={<PrivateRoute ><Sidebar /></PrivateRoute>} />
+        <Route path="/update/:id" element={<PrivateRoute ><Sidebar /></PrivateRoute>} />
+
       </Routes>
     </BrowserRouter>
   );

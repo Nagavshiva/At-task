@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import TaskDetails from "../Tasks/TaskDetails";
 import TaskForm from "../Tasks/TaskForm";
@@ -7,7 +7,7 @@ import UpdateForm from "../Tasks/UpdateForm";
 const Main = () => {
   const [showTask, setShowTask] = useState(false);
   const [taskCount, setTaskCount] = useState(0);
-  const [taskData, setTaskData] = useState(null); 
+  const [taskData, setTaskData] = useState(null);
   const location = useLocation();
 
   const handleAdd = () => {
@@ -18,13 +18,41 @@ const Main = () => {
     setShowTask(false);
   };
 
+ 
+
   const incrementTaskCount = () => {
-    setTaskCount((prevCount) => prevCount + 1);
+    setTaskCount((prevCount) => {
+      const newCount = prevCount + 1;
+      localStorage.setItem("taskCount", newCount);
+      return newCount;
+    });
   };
 
   const decrementTaskCount = () => {
-    setTaskCount((prevCount) => prevCount - 1);
+    setTaskCount((prevCount) => {
+      const newCount = prevCount - 1;
+      localStorage.setItem("taskCount", newCount);
+      return newCount;
+    });
   };
+
+  useEffect(() => {
+    // Retrieve taskCount from localStorage on component mount
+    const storedTaskCount = localStorage.getItem("taskCount");
+
+    if (storedTaskCount) {
+      setTaskCount(Number(storedTaskCount));
+    }
+
+    // Retrieve taskData from localStorage on component mount
+    const storedTaskData = localStorage.getItem("taskData");
+
+    if (storedTaskData) {
+      setTaskData(JSON.parse(storedTaskData));
+    }
+  }, []);
+
+
 
   return (
     <>
@@ -49,18 +77,20 @@ const Main = () => {
           />
         )}
 
-        {location.pathname.startsWith("/update/") && (
+        {location.pathname.startsWith("/update/") && taskData !== null && (
           <UpdateForm
             showTask={setShowTask}
             decrementTaskCount={decrementTaskCount}
-            task_msg={taskData.task_msg}
+            assigned_user={taskData.assigned_user}
             task_date={taskData.task_date}
             task_time={taskData.task_time}
-            assigned_user={taskData.assigned_user}
+            task_msg={taskData.task_msg}
           />
         )}
 
-        {location.pathname === "/get" && <TaskDetails setTaskData={setTaskData} />} 
+        {location.pathname === "/get" && (
+          <TaskDetails setTaskData={setTaskData}  />
+        )}
       </div>
     </>
   );
